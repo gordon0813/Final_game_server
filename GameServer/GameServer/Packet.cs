@@ -18,7 +18,8 @@ namespace GameServer
     public enum ClientPackets
     {
         welcomeReceived = 1,
-        playerMovement
+        playerMovement,
+        playerPos
     }
 
     public class Packet : IDisposable

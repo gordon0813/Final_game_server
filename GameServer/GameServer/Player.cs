@@ -20,7 +20,7 @@ namespace GameServer
         {
             id = _id;
             username = _username;
-            position = _spawnPosition;
+            position = new Vector3(0,0,-26);
             rotation = Quaternion.Identity;
 
             inputs = new bool[4];
@@ -32,19 +32,19 @@ namespace GameServer
             Vector2 _inputDirection = Vector2.Zero;
             if (inputs[0])
             {
-                _inputDirection.Y += 1;
+                _inputDirection.Y += 3;
             }
             if (inputs[1])
             {
-                _inputDirection.Y -= 1;
+                _inputDirection.Y -= 3;
             }
             if (inputs[2])
             {
-                _inputDirection.X += 1;
+                _inputDirection.X += 3;
             }
             if (inputs[3])
             {
-                _inputDirection.X -= 1;
+                _inputDirection.X -= 3;
             }
 
             Move(_inputDirection);
@@ -72,5 +72,12 @@ namespace GameServer
             inputs = _inputs;
             rotation = _rotation;
         }
+        public void SetPOS(Vector3 p)
+        {
+            position=p;
+
+            ServerSend.PlayerPosition(this);
+        }
+        
     }
 }

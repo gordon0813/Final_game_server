@@ -31,5 +31,11 @@ namespace GameServer
 
             Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
         }
+        public static void PlayerPosi (int _fromClient, Packet _packet){
+             Vector3 _position = _packet.ReadVector3();
+             Server.clients[_fromClient].player.SetPOS(_position);
+             Console.WriteLine("getposition");
+
+        }
     }
 }
