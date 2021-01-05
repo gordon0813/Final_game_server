@@ -33,8 +33,22 @@ namespace GameServer
         }
         public static void PlayerPosi (int _fromClient, Packet _packet){
              Vector3 _position = _packet.ReadVector3();
+             Vector3 weaponrot = _packet.ReadVector3();
+             string face=_packet.ReadString();
+             bool walk = _packet.ReadBool();
+             
+             Server.clients[_fromClient].player.SetFace(face);
+             Server.clients[_fromClient].player.SetWalk(walk);
              Server.clients[_fromClient].player.SetPOS(_position);
-             Console.WriteLine("getposition");
+             //Console.WriteLine("getposition");
+
+        }
+        public static void PlayerShoot(int _fromClient, Packet _packet){
+            Vector3 _position = _packet.ReadVector3();
+            Vector3 _rotation = _packet.ReadVector3();
+            Console.WriteLine("shoot");
+            Console.WriteLine(_position);
+            Server.clients[_fromClient].bulletShoot(_position,_rotation);
 
         }
     }

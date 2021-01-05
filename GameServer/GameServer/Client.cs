@@ -237,6 +237,18 @@ namespace GameServer
                 }
             }
         }
+        public void bulletShoot(Vector3 pos,Vector3 rot){
+            foreach (Client _client in Server.clients.Values)
+            {
+                if (_client.player != null)
+                {
+                    if (_client.id != id)
+                    {
+                        ServerSend.SpawnProjectile(_client.id, pos,rot);
+                    }
+                }
+            }
+        }
 
         /// <summary>Disconnects the client and stops all network traffic.</summary>
         private void Disconnect()

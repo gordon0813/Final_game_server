@@ -11,7 +11,19 @@ namespace GameServer
         welcome = 1,
         spawnPlayer,
         playerPosition,
-        playerRotation
+        playerRotation,
+        playerDisconnected,
+        playerHealth,
+        playerRespawned,
+        createItemSpawner,
+        itemSpawned,
+        itemPickedUp,
+        spawnProjectile,
+        projectilePosition,
+        projectileExploded,
+        spawnEnemy,
+        enemyPosition,
+        enemyHealth
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -19,7 +31,8 @@ namespace GameServer
     {
         welcomeReceived = 1,
         playerMovement,
-        playerPos
+        playerPos,
+        playerShoot
     }
 
     public class Packet : IDisposable

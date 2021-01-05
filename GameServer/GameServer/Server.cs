@@ -66,7 +66,7 @@ namespace GameServer
         {
             try
             {
-                Console.WriteLine("get udp callback.");
+                //Console.WriteLine("get udp callback.");
                 IPEndPoint _clientEndPoint = new IPEndPoint(IPAddress.Any, 0);
                 byte[] _data = udpListener.EndReceive(_result, ref _clientEndPoint);
                 udpListener.BeginReceive(UDPReceiveCallback, null);
@@ -96,7 +96,7 @@ namespace GameServer
                     {
                         // Ensures that the client is not being impersonated by another by sending a false clientID
                         clients[_clientId].udp.HandleData(_packet);
-                        Console.WriteLine("get udp packets.");
+                       // Console.WriteLine("get udp packets.");
                     }
                 }
             }
@@ -137,6 +137,7 @@ namespace GameServer
                 { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
                 { (int)ClientPackets.playerPos, ServerHandle.PlayerPosi },
+                { (int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
             };
             Console.WriteLine("Initialized packets.");
         }

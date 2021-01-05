@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 
 namespace GameServer
@@ -117,6 +118,18 @@ namespace GameServer
                 SendTCPData(_toClient, _packet);
             }
         }
+        public static void SpawnProjectile(int _toClient, Vector3 pos,Vector3 rot){
+            using (Packet _packet = new Packet((int)ServerPackets.spawnProjectile))
+            {
+                _packet.Write(pos);
+                _packet.Write(rot);
+                //_packet.Write(_player.position);
+               // _packet.Write(_player.rotation);
+                Console.WriteLine("send shoot");
+                SendTCPData(_toClient, _packet);
+                
+            }
+        }
 
         /// <summary>Sends a player's updated position to all clients.</summary>
         /// <param name="_player">The player whose position to update.</param>
@@ -126,6 +139,10 @@ namespace GameServer
             {
                 _packet.Write(_player.id);
                 _packet.Write(_player.position);
+                _packet.Write(_player.facing);
+                _packet.Write(_player.walk);
+                
+
 
                 SendUDPDataToAll(_packet);
             }

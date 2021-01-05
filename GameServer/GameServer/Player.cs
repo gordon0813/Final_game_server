@@ -9,7 +9,8 @@ namespace GameServer
     {
         public int id;
         public string username;
-
+        public string facing="right";
+        public bool walk;
         public Vector3 position;
         public Quaternion rotation;
 
@@ -29,6 +30,7 @@ namespace GameServer
         /// <summary>Processes player input and moves the player.</summary>
         public void Update()
         {
+            /*
             Vector2 _inputDirection = Vector2.Zero;
             if (inputs[0])
             {
@@ -45,21 +47,22 @@ namespace GameServer
             if (inputs[3])
             {
                 _inputDirection.X -= 3;
-            }
+            }*/
 
-            Move(_inputDirection);
+            Move();
         }
 
         /// <summary>Calculates the player's desired movement direction and moves him.</summary>
         /// <param name="_inputDirection"></param>
-        private void Move(Vector2 _inputDirection)
+        private void Move()
         {
+            /*
             Vector3 _forward = Vector3.Transform(new Vector3(0, 0, 1), rotation);
             Vector3 _right = Vector3.Normalize(Vector3.Cross(_forward, new Vector3(0, 1, 0)));
 
             Vector3 _moveDirection = _right * _inputDirection.X + _forward * _inputDirection.Y;
             position += _moveDirection * moveSpeed;
-
+*/
             ServerSend.PlayerPosition(this);
             ServerSend.PlayerRotation(this);
         }
@@ -76,8 +79,10 @@ namespace GameServer
         {
             position=p;
 
-            ServerSend.PlayerPosition(this);
+            //ServerSend.PlayerPosition(this);
         }
+        public void SetFace(string face){this.facing=face;}
+        public void SetWalk(bool w){this.walk=w;}
         
     }
 }
