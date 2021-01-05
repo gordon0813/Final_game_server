@@ -23,7 +23,8 @@ namespace GameServer
         projectileExploded,
         spawnEnemy,
         enemyPosition,
-        enemyHealth
+        enemyHealth,
+        playerGun
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -32,7 +33,8 @@ namespace GameServer
         welcomeReceived = 1,
         playerMovement,
         playerPos,
-        playerShoot
+        playerShoot,
+        playerGun
     }
 
     public class Packet : IDisposable

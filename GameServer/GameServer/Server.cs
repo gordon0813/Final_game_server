@@ -138,6 +138,7 @@ namespace GameServer
                 { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
                 { (int)ClientPackets.playerPos, ServerHandle.PlayerPosi },
                 { (int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
+                { (int)ClientPackets.playerGun, ServerHandle.playerGun },
             };
             Console.WriteLine("Initialized packets.");
         }

@@ -11,6 +11,11 @@ namespace GameServer
         public string username;
         public string facing="right";
         public bool walk;
+        public bool isbombed;
+        public bool coal;
+        public bool metal ;
+        public bool water ;
+        public bool develop ;
         public Vector3 position;
         public Quaternion rotation;
 

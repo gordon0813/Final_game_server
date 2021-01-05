@@ -130,6 +130,18 @@ namespace GameServer
                 
             }
         }
+        public static void SpawnGun(int _toClient, bool hasgun){
+            using (Packet _packet = new Packet((int)ServerPackets.spawnProjectile))
+            {
+                _packet.Write(hasgun);
+               // _packet.Write(rot);
+                //_packet.Write(_player.position);
+               // _packet.Write(_player.rotation);
+                Console.WriteLine("send gun");
+                SendTCPData(_toClient, _packet);
+                
+            }
+        }
 
         /// <summary>Sends a player's updated position to all clients.</summary>
         /// <param name="_player">The player whose position to update.</param>
@@ -141,7 +153,16 @@ namespace GameServer
                 _packet.Write(_player.position);
                 _packet.Write(_player.facing);
                 _packet.Write(_player.walk);
-                
+                _packet.Write(_player.isbombed);
+                _packet.Write(_player.coal);
+                _packet.Write(_player.metal);
+                _packet.Write(_player.water);
+                _packet.Write(_player.develop);
+                /*
+                public bool isbombed;
+        public bool coal;
+        public bool metal ;
+        public bool water ;*/
 
 
                 SendUDPDataToAll(_packet);

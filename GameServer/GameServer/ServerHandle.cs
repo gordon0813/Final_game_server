@@ -36,11 +36,29 @@ namespace GameServer
              Vector3 weaponrot = _packet.ReadVector3();
              string face=_packet.ReadString();
              bool walk = _packet.ReadBool();
+             bool isbombed=_packet.ReadBool();
+             bool coal=_packet.ReadBool();
+             bool metal =_packet.ReadBool();
+             bool water =_packet.ReadBool();
+             bool develop =_packet.ReadBool();
              
              Server.clients[_fromClient].player.SetFace(face);
              Server.clients[_fromClient].player.SetWalk(walk);
              Server.clients[_fromClient].player.SetPOS(_position);
+             Server.clients[_fromClient].player.isbombed=isbombed;
+             Server.clients[_fromClient].player.coal=coal;
+             Server.clients[_fromClient].player.metal=metal;
+             Server.clients[_fromClient].player.water=water;
+             Server.clients[_fromClient].player.develop=develop;
              //Console.WriteLine("getposition");
+             /*
+             ClientSend.PlayerPos(gameObject.transform.position
+      ,gameObject.GetComponent<facingDirection>().facing
+      ,gameObject.GetComponent<Animator>().GetBool("walk")
+      ,gameObject.GetComponent<Animator>().GetBool("isBombed")
+      ,gameObject.GetComponent<Animator>().GetBool("coal")
+      ,gameObject.GetComponent<Animator>().GetBool("metal")
+      ,gameObject.GetComponent<Animator>().GetBool("water"));*/
 
         }
         public static void PlayerShoot(int _fromClient, Packet _packet){
@@ -50,6 +68,15 @@ namespace GameServer
             Console.WriteLine(_position);
             Server.clients[_fromClient].bulletShoot(_position,_rotation);
 
-        }
+        }//playerGun
+        public static void playerGun(int _fromClient, Packet _packet){
+            bool  hasgun = _packet.ReadBool();
+            //Vector3 _rotation = _packet.ReadVector3();
+            Console.WriteLine("take gun");
+            //Console.WriteLine(_position);
+            Server.clients[_fromClient].takegun(hasgun);
+
+        }//playerGun
+
     }
 }

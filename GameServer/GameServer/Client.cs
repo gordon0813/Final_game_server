@@ -249,6 +249,18 @@ namespace GameServer
                 }
             }
         }
+        public void takegun(bool hasgun){
+            foreach (Client _client in Server.clients.Values)
+            {
+                if (_client.player != null)
+                {
+                    if (_client.id != id)
+                    {
+                        ServerSend.SpawnGun(_client.id,hasgun);
+                    }
+                }
+            }
+        }
 
         /// <summary>Disconnects the client and stops all network traffic.</summary>
         private void Disconnect()
