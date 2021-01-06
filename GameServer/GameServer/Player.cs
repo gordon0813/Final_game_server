@@ -17,6 +17,7 @@ namespace GameServer
         public bool water ;
         public bool develop ;
         public Vector3 position;
+        public Vector3 weaponrot;
         public Quaternion rotation;
 
         private float moveSpeed = 5f / Constants.TICKS_PER_SEC;

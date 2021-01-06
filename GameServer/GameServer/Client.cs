@@ -249,14 +249,14 @@ namespace GameServer
                 }
             }
         }
-        public void takegun(bool hasgun){
+        public void takegun(int from,bool hasgun){
             foreach (Client _client in Server.clients.Values)
             {
                 if (_client.player != null)
                 {
                     if (_client.id != id)
                     {
-                        ServerSend.SpawnGun(_client.id,hasgun);
+                        ServerSend.SpawnGun(_client.id,hasgun,from);
                     }
                 }
             }

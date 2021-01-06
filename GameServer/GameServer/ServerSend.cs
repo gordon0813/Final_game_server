@@ -130,9 +130,10 @@ namespace GameServer
                 
             }
         }
-        public static void SpawnGun(int _toClient, bool hasgun){
-            using (Packet _packet = new Packet((int)ServerPackets.spawnProjectile))
+        public static void SpawnGun(int _toClient, bool hasgun,int from){
+            using (Packet _packet = new Packet((int)ServerPackets.playerGun))
             {
+                _packet.Write(from);
                 _packet.Write(hasgun);
                // _packet.Write(rot);
                 //_packet.Write(_player.position);
@@ -158,6 +159,7 @@ namespace GameServer
                 _packet.Write(_player.metal);
                 _packet.Write(_player.water);
                 _packet.Write(_player.develop);
+                _packet.Write(_player.weaponrot);
                 /*
                 public bool isbombed;
         public bool coal;

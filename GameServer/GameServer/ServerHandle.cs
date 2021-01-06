@@ -45,6 +45,8 @@ namespace GameServer
              Server.clients[_fromClient].player.SetFace(face);
              Server.clients[_fromClient].player.SetWalk(walk);
              Server.clients[_fromClient].player.SetPOS(_position);
+             Server.clients[_fromClient].player.weaponrot=weaponrot;
+             Console.WriteLine(weaponrot);
              Server.clients[_fromClient].player.isbombed=isbombed;
              Server.clients[_fromClient].player.coal=coal;
              Server.clients[_fromClient].player.metal=metal;
@@ -74,7 +76,7 @@ namespace GameServer
             //Vector3 _rotation = _packet.ReadVector3();
             Console.WriteLine("take gun");
             //Console.WriteLine(_position);
-            Server.clients[_fromClient].takegun(hasgun);
+            Server.clients[_fromClient].takegun(_fromClient,hasgun);
 
         }//playerGun
 
