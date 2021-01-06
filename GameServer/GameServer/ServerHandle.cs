@@ -32,6 +32,8 @@ namespace GameServer
             Server.clients[_fromClient].player.SetInput(_inputs, _rotation);
         }
         public static void PlayerPosi (int _fromClient, Packet _packet){
+            if(Server.clients[_fromClient]==null)return;
+            if(Server.clients[_fromClient].player==null)return;
              Vector3 _position = _packet.ReadVector3();
              Vector3 weaponrot = _packet.ReadVector3();
              string face=_packet.ReadString();
@@ -46,7 +48,7 @@ namespace GameServer
              Server.clients[_fromClient].player.SetWalk(walk);
              Server.clients[_fromClient].player.SetPOS(_position);
              Server.clients[_fromClient].player.weaponrot=weaponrot;
-             Console.WriteLine(weaponrot);
+             //Console.WriteLine(weaponrot);
              Server.clients[_fromClient].player.isbombed=isbombed;
              Server.clients[_fromClient].player.coal=coal;
              Server.clients[_fromClient].player.metal=metal;
@@ -78,7 +80,21 @@ namespace GameServer
             //Console.WriteLine(_position);
             Server.clients[_fromClient].takegun(_fromClient,hasgun);
 
-        }//playerGun
+        }//playerGun//updateResource
+        public static void updateResource(int _fromClient, Packet _packet){
+            bool  coal = _packet.ReadBool();
+            bool  metal = _packet.ReadBool();
+            bool  water = _packet.ReadBool();
+            //Vector3 _rotation = _packet.ReadVector3();
+            Console.WriteLine("take resource");
+            //Console.WriteLine(_position);
+            if(coal)Client.coal+=10;
+            else if(metal)Client.metal+=10;
+            else if(water)Client.water+=10;
+            Client.updateresource();
+
+
+        }
 
     }
 }

@@ -142,8 +142,21 @@ namespace GameServer
                 SendTCPData(_toClient, _packet);
                 
             }
+        }//updateResource
+        public static void updateResource(int _toClient,int coal ,int metal,int water){
+            using (Packet _packet = new Packet((int)ServerPackets.updateResource))
+            {
+                _packet.Write(coal);
+                _packet.Write(metal);
+                _packet.Write(water);
+               // _packet.Write(rot);
+                //_packet.Write(_player.position);
+               // _packet.Write(_player.rotation);
+                Console.WriteLine("send resource");
+                SendTCPData(_toClient, _packet);
+                
+            }
         }
-
         /// <summary>Sends a player's updated position to all clients.</summary>
         /// <param name="_player">The player whose position to update.</param>
         public static void PlayerPosition(Player _player)
@@ -170,7 +183,7 @@ namespace GameServer
                 SendUDPDataToAll(_packet);
             }
         }
-
+        //this is unused !!!!!!
         /// <summary>Sends a player's updated rotation to all clients except to himself (to avoid overwriting the local player's rotation).</summary>
         /// <param name="_player">The player whose rotation to update.</param>
         public static void PlayerRotation(Player _player)

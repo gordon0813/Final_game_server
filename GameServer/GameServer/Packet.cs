@@ -24,7 +24,8 @@ namespace GameServer
         spawnEnemy,
         enemyPosition,
         enemyHealth,
-        playerGun
+        playerGun,
+        updateResource
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -34,7 +35,8 @@ namespace GameServer
         playerMovement,
         playerPos,
         playerShoot,
-        playerGun
+        playerGun,
+        updateResource
     }
 
     public class Packet : IDisposable

@@ -10,6 +10,21 @@ namespace GameServer
     class Client
     {
         public static int dataBufferSize = 4096;
+        public static int coal=0;
+        public static int metal=0;
+        public static int water=0;
+        public static void updateresource(){
+            foreach (Client _client in Server.clients.Values)
+            {
+                if (_client.player != null)
+                {
+                    if (_client.id != 0)
+                    {
+                        ServerSend.updateResource(_client.id, Client.coal,Client.metal,Client.water);
+                    }
+                }
+            }
+        }
 
         public int id;
         public Player player;

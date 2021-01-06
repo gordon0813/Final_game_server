@@ -139,8 +139,9 @@ namespace GameServer
                 { (int)ClientPackets.playerPos, ServerHandle.PlayerPosi },
                 { (int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
                 { (int)ClientPackets.playerGun, ServerHandle.playerGun },
+                { (int)ClientPackets.updateResource, ServerHandle.updateResource },
             };
             Console.WriteLine("Initialized packets.");
-        }
+        }//updateResource
     }
 }
